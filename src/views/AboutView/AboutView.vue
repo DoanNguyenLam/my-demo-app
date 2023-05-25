@@ -22,6 +22,7 @@ export default {
     // Define component methods
     const increment = async () => {
       count.value++
+      store.dispatch('confirmModal/finished')
     }
 
     const openModalConfirm = () => {

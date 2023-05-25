@@ -43,10 +43,11 @@ const confirmModal = {
       console.log('ok', state)
     },
     CANCEL(state) {
-      state.callback = null
       state.isShow = false
-      state.isLoading = false
       console.log('cancel', state)
+    },
+    FINISHED(state) {
+      state.isLoading = false
     }
   },
   actions: {
@@ -58,6 +59,9 @@ const confirmModal = {
     },
     cancel({ commit }) {
       commit('CANCEL')
+    },
+    finished({ commit }) {
+      commit('FINISHED')
     }
   }
 }
