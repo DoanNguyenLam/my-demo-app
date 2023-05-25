@@ -1,5 +1,11 @@
 <template>
-  <el-dialog class="p-0" v-model="dialogVisible" close-header width="30%">
+  <el-dialog
+    class="p-0"
+    v-model="dialogVisible"
+    close-header
+    @close="cancel()"
+    width="30%"
+  >
     <h6 class="text-xl text-center">{{ objInfo.title }}</h6>
     <p>{{ objInfo.sub }}</p>
     <template #footer>
