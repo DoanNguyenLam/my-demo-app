@@ -30,38 +30,36 @@ const confirmModal = {
       state.isShow = true
       console.log('open', state)
     },
-    async OK(state) {
+    START(state) {
       state.isLoading = true
-      setTimeout(() => {
-        console.log('calling...')
-        state.callback()
-        state.isLoading = false
-        state.callback = null
-      }, 3000)
-
       state.isShow = false
-      console.log('ok', state)
+      console.log('start', state)
     },
     CANCEL(state) {
       state.isShow = false
+      state.callback = null
       console.log('cancel', state)
     },
     FINISHED(state) {
       state.isLoading = false
+      state.callback = null
+      console.log('finished', state)
     }
   },
   actions: {
     open({ commit }, { callback, title, sub, okType, cancelType }) {
       commit('ADD_CALL_BACK', { callback, title, sub, okType, cancelType })
     },
-    confirm({ commit }) {
-      commit('OK')
+    confirm({ commit, state }) {
+      commit('START')
+      setTimeout(() => {
+        console.log('calling...')
+        state.callback()
+        commit('FINISHED')
+      }, 3000)
     },
     cancel({ commit }) {
       commit('CANCEL')
-    },
-    finished({ commit }) {
-      commit('FINISHED')
     }
   }
 }

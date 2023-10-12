@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading">
+  <div v-loading="loading" style="width: 100%">
     <h1 class="text-5xl">About view</h1>
     <p>Count: {{ count }}</p>
     <button @click="openModalConfirm()">Submit</button>
@@ -22,7 +22,7 @@ export default {
     // Define component methods
     const increment = async () => {
       count.value++
-      store.dispatch('confirmModal/finished')
+      console.log('called')
     }
 
     const openModalConfirm = () => {

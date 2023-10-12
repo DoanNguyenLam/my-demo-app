@@ -1,11 +1,5 @@
 <template>
-  <el-dialog
-    class="p-0"
-    v-model="dialogVisible"
-    close-header
-    @close="cancel()"
-    width="30%"
-  >
+  <el-dialog class="p-0" v-model="dialogVisible" close-header width="30%">
     <h6 class="text-xl text-center">{{ objInfo.title }}</h6>
     <p>{{ objInfo.sub }}</p>
     <template #footer>
@@ -30,10 +24,12 @@ export default {
     const objInfo = computed(() => store.state.confirmModal.customObj)
 
     const confirm = () => {
+      console.log('click confirm')
       store.dispatch('confirmModal/confirm')
     }
 
     const cancel = () => {
+      console.log('click cancel')
       store.dispatch('confirmModal/cancel')
     }
 
