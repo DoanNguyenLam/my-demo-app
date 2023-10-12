@@ -2,7 +2,7 @@
   <div v-loading="loading" style="width: 100%">
     <h1 class="text-5xl">About view</h1>
     <p>Count: {{ count }}</p>
-    <button @click="openModalConfirm()">Submit</button>
+    <button @click="submitData()">Submit</button>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
       console.log('called')
     }
 
-    const openModalConfirm = () => {
+    const submitData = () => {
       store.dispatch('confirmModal/open', {
         callback: increment,
         title: 'AV',
@@ -37,7 +37,7 @@ export default {
     return {
       count,
       increment,
-      openModalConfirm,
+      submitData,
       isShow,
       loading
     }
